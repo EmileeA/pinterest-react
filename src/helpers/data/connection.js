@@ -5,8 +5,8 @@ import firebaseConfig from '../apiKeys.json';
 
 const firebaseApp = () => {
   if (!firebase.apps.length) {
-    firebase.intializeApp(firebaseConfig.firebaseKeys);
+    firebase.initializeApp(firebaseConfig.firebaseKeys);
   }
 };
 
-firebaseApp();
+export default firebaseApp;
