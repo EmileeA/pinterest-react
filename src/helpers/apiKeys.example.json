@@ -1,4 +1,5 @@
-"firebaseKeys": {
+{
+  "firebaseKeys": {
   "apiKey": "",
   "authDomain": "",
   "databaseURL": "",
@@ -6,4 +7,5 @@
   "storageBucket": "",
   "messagingSenderId": "",
   "appId": ""
-};
+}
+}
