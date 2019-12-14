@@ -5,6 +5,7 @@ import firebaseConnection from '../helpers/data/connection';
 import Auth from '../components/Auth/Auth';
 import MyNavbar from '../components/MyNavbar/MyNavbar';
 import BoardsContainer from '../components/BoardsContainer/BoardsContainer';
+import SingleBoard from '../components/Singleboard/Singleboard';
 
 import './App.scss';
 
@@ -35,7 +36,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { authed } = this.state;
+    const { authed, selectedBoardId } = this.state;
 
     return (
       <div className="App">
@@ -45,6 +46,9 @@ class App extends React.Component {
         {/* else show login button */}
         {
           (authed) ? (<BoardsContainer setSingleBoard={this.setSingleBoard} />) : (<Auth />)
+        }
+        {
+         (selectedBoardId) && (<SingleBoard selectedBoardId={selectedBoardId} setSingleBoard={this.setSingleBoard}/>)
         }
       </div>
     );
