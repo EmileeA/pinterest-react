@@ -35,8 +35,19 @@ class App extends React.Component {
     this.setState({ selectedBoardId });
   }
 
-  render() {
+  renderView = () => {
     const { authed, selectedBoardId } = this.state;
+    if (!authed) {
+      return (<Auth />);
+    }
+    if (!selectedBoardId) {
+      return (<BoardsContainer setSingleBoard={this.setSingleBoard} />);
+    }
+    return (<SingleBoard selectedBoardId={selectedBoardId} setSingleBoard={this.setSingleBoard}/>);
+  }
+
+  render() {
+    const { authed } = this.state;
 
     return (
       <div className="App">
@@ -45,10 +56,7 @@ class App extends React.Component {
         {/* if they are authenticated, load the board */}
         {/* else show login button */}
         {
-          (authed) ? (<BoardsContainer setSingleBoard={this.setSingleBoard} />) : (<Auth />)
-        }
-        {
-         (selectedBoardId) && (<SingleBoard selectedBoardId={selectedBoardId} setSingleBoard={this.setSingleBoard}/>)
+          this.renderView()
         }
       </div>
     );
