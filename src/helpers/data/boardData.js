@@ -2,6 +2,7 @@ import axios from 'axios';
 import apiKeys from '../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
+
 const getBoardsByUid = (uid) => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/boards.json?orderBy="uid"&equalTo="${uid}"`)
     .then((result) => {
@@ -21,4 +22,6 @@ const getBoardsByUid = (uid) => new Promise((resolve, reject) => {
     });
 });
 
-export default { getBoardsByUid };
+const getSingleBoard = (boardId) => axios.get(`${baseUrl}/boards/${boardId}.json`);
+
+export default { getBoardsByUid, getSingleBoard };
